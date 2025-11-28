@@ -55,13 +55,13 @@ public class RegisterMenu {
                         txtConfirmarPassword.getText()
                 );
             } catch (CamposVaciosException ex) {
-                System.getLogger(RegisterMenu.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+                mostrarAlerta(ex.getMessage());
             } catch (LongitudMinimaException ex) {
-                System.getLogger(RegisterMenu.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+                mostrarAlerta(ex.getMessage());
             } catch (ContraseñasDistintasException ex) {
-                System.getLogger(RegisterMenu.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+                mostrarAlerta(ex.getMessage());
             } catch (UsuarioExistenteException ex) {
-                System.getLogger(RegisterMenu.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+                mostrarAlerta(ex.getMessage());
             }
         });
         
@@ -76,6 +76,9 @@ public class RegisterMenu {
         root.getChildren().addAll(titulo, txtUsuario, txtPassword, txtConfirmarPassword, btnRegistrar, new Label(""), btnVolver);
     }
     
+    private void mostrarAlerta(String mensaje) {
+        System.out.println("ALERTA UI: " + mensaje);
+    }
     public Parent getRoot(){
         return root;
     }
